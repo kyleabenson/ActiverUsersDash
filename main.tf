@@ -1,7 +1,7 @@
 resource "google_monitoring_dashboard" "dashboard" {
   project = "${var.project_id}"
   dashboard_json = "{
-  "displayName": "Active Users Sample",
+  "displayName": "Active Users",
   "mosaicLayout": {
     "columns": 48,
     "tiles": [
@@ -15,7 +15,7 @@ resource "google_monitoring_dashboard" "dashboard" {
             "timeSeriesQuery": {
               "opsAnalyticsQuery": {
                 "savedQueryId": "",
-                "sql": "SELECT JSON_VALUE(labels.user_id) AS user_id, TIMESTAMP_TRUNC(timestamp, MONTH) as date,\n  FROM `${var.project_id}.global._Default._Default` \n  WHERE resource.type = \"cloudaicompanion.googleapis.com/Instance\" ",
+                "sql": "SELECT JSON_VALUE(labels.user_id) AS user_id, TIMESTAMP_TRUNC(timestamp, MONTH) as date,\n  FROM `PROJECT_ID.global._Default._Default` \n  WHERE resource.type = \"cloudaicompanion.googleapis.com/Instance\" ",
                 "queryHandle": "",
                 "queryExecutionRules": {
                   "useReservedSlots": false
@@ -62,7 +62,7 @@ resource "google_monitoring_dashboard" "dashboard" {
             "timeSeriesQuery": {
               "opsAnalyticsQuery": {
                 "savedQueryId": "",
-                "sql": "-- SELECT \n--   TIMESTAMP_TRUNC(timestamp, MONTH) as date,\n--   COUNT(DISTINCT user_id) AS unique_user_count\n-- FROM (\n--   SELECT JSON_VALUE(labels.user_id) AS user_id, timestamp\n--   FROM `${var.project_id}.global._Default._Default` \n--   WHERE resource.type = \"cloudaicompanion.googleapis.com/Instance\" AND date(timestamp) between date_sub(current_date, interval 30 day) and current_date\n-- ) \n-- GROUP BY 1\n-- ORDER BY 1 ASC;\n\nSELECT JSON_VALUE(labels.user_id) AS user_id, TIMESTAMP_TRUNC(timestamp, WEEK) as date,\n  FROM `${var.project_id}.global._Default._Default` \n  WHERE resource.type = \"cloudaicompanion.googleapis.com/Instance\" \n\n",
+                "sql": "-- SELECT \n--   TIMESTAMP_TRUNC(timestamp, MONTH) as date,\n--   COUNT(DISTINCT user_id) AS unique_user_count\n-- FROM (\n--   SELECT JSON_VALUE(labels.user_id) AS user_id, timestamp\n--   FROM `PROJECT_ID.global._Default._Default` \n--   WHERE resource.type = \"cloudaicompanion.googleapis.com/Instance\" AND date(timestamp) between date_sub(current_date, interval 30 day) and current_date\n-- ) \n-- GROUP BY 1\n-- ORDER BY 1 ASC;\n\nSELECT JSON_VALUE(labels.user_id) AS user_id, TIMESTAMP_TRUNC(timestamp, WEEK) as date,\n  FROM `PROJECT_ID.global._Default._Default` \n  WHERE resource.type = \"cloudaicompanion.googleapis.com/Instance\" \n\n",
                 "queryHandle": "",
                 "queryExecutionRules": {
                   "useReservedSlots": false
@@ -109,7 +109,7 @@ resource "google_monitoring_dashboard" "dashboard" {
             "timeSeriesQuery": {
               "opsAnalyticsQuery": {
                 "savedQueryId": "",
-                "sql": "-- SELECT \n--   TIMESTAMP_TRUNC(timestamp, MONTH) as date,\n--   COUNT(DISTINCT user_id) AS unique_user_count\n-- FROM (\n--   SELECT JSON_VALUE(labels.user_id) AS user_id, timestamp\n--   FROM `${var.project_id}.global._Default._Default` \n--   WHERE resource.type = \"cloudaicompanion.googleapis.com/Instance\" AND date(timestamp) between date_sub(current_date, interval 30 day) and current_date\n-- ) \n-- GROUP BY 1\n-- ORDER BY 1 ASC;\n\nSELECT JSON_VALUE(labels.user_id) AS user_id, TIMESTAMP_TRUNC(timestamp, DAY) as date,\n  FROM `${var.project_id}.global._Default._Default` \n  WHERE resource.type = \"cloudaicompanion.googleapis.com/Instance\" \n\n",
+                "sql": "-- SELECT \n--   TIMESTAMP_TRUNC(timestamp, MONTH) as date,\n--   COUNT(DISTINCT user_id) AS unique_user_count\n-- FROM (\n--   SELECT JSON_VALUE(labels.user_id) AS user_id, timestamp\n--   FROM `PROJECT_ID.global._Default._Default` \n--   WHERE resource.type = \"cloudaicompanion.googleapis.com/Instance\" AND date(timestamp) between date_sub(current_date, interval 30 day) and current_date\n-- ) \n-- GROUP BY 1\n-- ORDER BY 1 ASC;\n\nSELECT JSON_VALUE(labels.user_id) AS user_id, TIMESTAMP_TRUNC(timestamp, DAY) as date,\n  FROM `PROJECT_ID.global._Default._Default` \n  WHERE resource.type = \"cloudaicompanion.googleapis.com/Instance\" \n\n",
                 "queryHandle": "",
                 "queryExecutionRules": {
                   "useReservedSlots": false
@@ -157,7 +157,7 @@ resource "google_monitoring_dashboard" "dashboard" {
                 "timeSeriesQuery": {
                   "opsAnalyticsQuery": {
                     "savedQueryId": "",
-                    "sql": "\nSELECT JSON_VALUE(labels.user_id) AS user_id, min(timestamp) AS date,\n  FROM `${var.project_id}.global._Default._Default` \n  WHERE resource.type = \"cloudaicompanion.googleapis.com/Instance\" \n  GROUP BY 1\n\n",
+                    "sql": "\nSELECT JSON_VALUE(labels.user_id) AS user_id, min(timestamp) AS date,\n  FROM `PROJECT_ID.global._Default._Default` \n  WHERE resource.type = \"cloudaicompanion.googleapis.com/Instance\" \n  GROUP BY 1\n\n",
                     "queryHandle": "CghNlbDVJO7DABIgam9iX0NHSFFrOEczVndnay1NMnJsbEhQRmo3Sm9CU2QaAlVTQJy3nZOmGA",
                     "queryExecutionRules": {
                       "useReservedSlots": false
