@@ -1,6 +1,6 @@
 resource "google_monitoring_dashboard" "dashboard" {
   project = "${var.project_id}"
-  dashboard_json = {
+  dashboard_json = "{
   "displayName": "Active Users Sample",
   "mosaicLayout": {
     "columns": 48,
@@ -205,6 +205,6 @@ resource "google_monitoring_dashboard" "dashboard" {
   },
   "dashboardFilters": [],
   "labels": {}
-}
+}"
 
 }
